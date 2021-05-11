@@ -1,0 +1,51 @@
+title = "Hop"
+url = "/hop/:id"
+layout = "basic-layout"
+is_hidden = 0
+
+[HopsList]
+sorting = "variety"
+direction = "asc"
+numberofitems = 0
+==
+{% set hop = HopsList.variety.first %} 
+<section class="hop section">
+    <div class="container">
+        <div class="row mb-5">  
+            <div class="col-8">
+                
+                <h2 class="text-center">{{ hop.variety }} </h2>
+            </div>            
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-12">
+            <ul class="list-unstyled mb-5">
+                <li class="mb-2"><h6>{{ 'descriptions'|_ }}</h6> {{ hop.descriptions }} </li>
+                <li class="mb-2"><h6>{{ 'alphaacid'|_ }}(%):</h6> {{ hop.alpha_min }}% - {{ hop.alpha_max }}% </li>
+                <li class="mb-2"><h6>{{ 'origin'|_ }}</h6>{{ hop.origin }}</li>
+            </ul>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-12">
+            <ul class="list-unstyled">
+             
+                <li class="mb-5"><h6>{{ 'aroma'|_ }}:</h6> {{ hop.aroma }}</li>
+                <li class="mb-5"><h6>{{ 'substitutions'|_ }}:</h6>
+                    <ul>
+                    {% for sub in hop.substitutions %}
+                        {% for hops in HopsList.listOfHops %}
+                            {% if  sub == hops.variety|replace({'®':''}) %}
+                                <li><a href="{{ 'hops/hop'|page({ id: hops.id }) }}"> {{ sub }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    </ul>
+                </li>               
+                <li class="mb-5"><h6>{{ 'purpose'|_ }}:</h6>{{ hop.purpose }}</li>
+                <li class="mb-5"><h6>{{ 'styles'|_ }}:</h6> {{ hop.styles }}</li>
+            </ul>
+            </div>
+        </div>
+        
+    </div>
+
+</section>

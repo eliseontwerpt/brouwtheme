@@ -1,0 +1,8 @@
+{
+    "name": "eliseontwerpt/brouwers-theme",
+    "type": "october-theme",
+    "description": "Theme by Harm Jan Plat",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

@@ -1,0 +1,19 @@
+==
+{##}
+<!doctype html>
+<html lang="nl">
+    <head>
+    {% partial 'site/meta' %}
+    </head>
+    <body>
+    {# Header with TopBar #}
+        {% partial 'site/header' %}        
+        <div class="main-wrapper">{# Main Wrapper #} 
+            {% partial 'site/pageheader' %} 
+            {% page %}
+            {% partial 'site/footer' %}
+        </div>{# End Main Wrapper #}
+    {# JavaScripts #}
+        {% partial 'site/scripts' %}
+    </body>
+</html>

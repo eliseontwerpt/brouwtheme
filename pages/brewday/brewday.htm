@@ -1,0 +1,83 @@
+title = "Brewday"
+url = "/brewday/:id"
+layout = "basic-layout"
+is_hidden = 0
+
+[BrewDay]
+sorting = "date"
+direction = "desc"
+numberofitems = 0
+==
+{% set day = BrewDay.day.first %}  
+<section class="brewday">   
+    <div class="container">
+        <div class="row header p-5">
+            <div class="col-lg-4 col-md-6 col-sm-12 datum-label text-center">
+                <p>{{ day.date_brewday|date('d') }} {{ day.date_brewday|date('F')|_ }} {{ day.date_brewday|date('Y') }}</p>
+            </div> 
+            <div class="col-lg-8 col-md-6 col-sm-12 ">                        
+                <h2 class="text-center">{{ day.recipe.name}}</h2>
+            </div>
+                       
+        </div>
+        <div class="row text-center mb-5 p-5">
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-5">
+                <h6>{{ 'og'|_ }}</h6>{{ day.og}} mg/l
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-5">
+                <h6>{{ 'abv'|_ }}</h6>{{ day.abv}}%
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-5">
+                <h6>{{ 'yeast'|_ }}</h6>{{ day.yeast}}
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 mb-5">
+                <h6>{{ 'score'|_ }}</h6>
+                {% for i in 1..10%}
+                    {% if day.score >= i %}
+                        <span class="material-icons md-18">&#xf0ec</span>
+                    {% elseif day.score < i and day.score > (i -1) %}
+                        <span class="material-icons md-18">&#xe839</span>
+                    {% else %}
+                        <span class="material-icons md-18">&#xe83a</span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                {% if day.date_bottle is not empty %}<h6>{{ 'bottle date'|_ }}</h6><p>{{ day.date_bottle|date('d') }} {{ day.date_bottle|date('F')|_ }} {{ day.date_bottle|date('Y') }}</p>{% endif %}
+            </div>
+        </div class="row mb-5">
+            {% if day.comment_malts is not empty %}
+                <div class="col-lg-12 mt-3">                  
+                    <h2>{{ 'malts'|_ }}</h2>
+                    <div class="col-12 comment">{{ day.comment_malts|md }}</div>
+                </div>
+            {% endif %}
+            {% if day.comment_hops is not empty %}
+                <div class="col-lg-12 mt-3"> 
+                    <h2>{{ 'hops'|_ }}</h2>
+                    <div class="col-12 comment">{{ day.comment_hops|md}}</div>
+                </div>
+            {% endif %}
+            {% if day.comment_mash is not empty %}
+                <div class="col-lg-12 mt-3"> 
+                    <h2>{{ 'mash'|_ }}</h2>
+                    <div class="col-12 comment">{{ day.comment_mash|md }}</div>
+                </div>
+                {% endif %}
+                {% if day.comment_boil is not empty %}
+                    <div class="col-lg-12">
+                        <h2>{{ 'boil'|_ }}</h2>
+                        <div class="col-12 comment"> {{ day.comment_boil|md }}</div>
+                    </div>
+                {% endif %}
+                {% if day.comment_fermentation is not empty %}
+                    <div class="col-lg-12">
+                        <h2>{{ 'fermentation'|_ }}</h2>
+                        <div class="col-12 comment">{{ day.comment_fermentation|md }}</div>
+                    </div>
+                {% endif %}
+                
+            </div>        
+        </div>
+    </div> 
+</section>

@@ -1,0 +1,25 @@
+==
+{% set recipe = BrewRecipes.recipe.first %} 
+<div class="col-12 text-center">                
+    <h3 class="text-center">{{ 'mashtable'|_ }}</h3>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">{{ 'step'|_}}</th>
+            <th scope="col">{{ 'temparature'|_}}</th>
+            <th scope="col">{{ 'time'|_}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mash in recipe.mashscheme %}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>            
+            <td>{{ mash.name }}</td>
+            <td>{{ mash.temperature }} &degC</td>
+            <td>{{ mash.time }} min</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

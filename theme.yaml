@@ -1,0 +1,8 @@
+name: BrewerTheme
+description: 'Website for homebrewers'
+author: EliseOntwerpt
+homepage: www.hjbrouwt.nl
+form: config/fields.yaml
+code: brewertheme
+require:
+    - RainLab.Translate

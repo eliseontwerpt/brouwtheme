@@ -1,0 +1,76 @@
+html{
+  overflow-x: hidden;
+  padding-top: 150px;
+}
+
+body{
+    background: $background-1 no-repeat;
+    background-size: cover;
+    background-position: 0% 0%;
+    background-color: $third-color;
+    font-family: $primary-font;
+    color: $dark;
+    }
+h1, h2, h3, h4, h5, h6, th{
+    font-family: $header-font;
+    color: $primary-color;
+    }
+section{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    }
+
+a {    
+    color: $third-color;
+    }
+.main-wrapper a{
+    color: $dark;
+    }
+a:hover{
+    color: $primary-color;
+    text-decoration:none;
+    }
+.material-icons {
+    font-size: 200%;
+    color: $primary-color;
+    }
+    
+.table {
+    border: 1px dotted $primary-color;
+   
+    thead{
+        tr{
+            th, td{
+                    border: 0;
+                    border-top: 1px dotted $primary-color;
+                    border-left: 1px dotted $primary-color;
+                    text-align: center;
+                    background-color: $fourth-color;
+                    @media(max-width:550px){
+                        font-size: 0.7rem;
+                        
+                        font-family: $primary-font;
+                         background-color: $third-color;
+                    }
+                }
+            }
+        }
+    tbody {
+        tr { 
+            th, td{
+                border: 0;
+                color: $secondary-color;
+                border-left: 1px dashed $primary-color;
+                border-top: 1px dashed $primary-color;
+                text-align: center;
+                font-weight: bold;
+                @media(max-width:550px){
+                        font-size: 0.7rem;
+                        word-wrap: break-word;
+                        background-color: $third-color;
+                    }
+            }
+        }
+    }
+}
+

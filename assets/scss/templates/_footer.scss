@@ -1,0 +1,12 @@
+.footer{
+    position:fixed;
+    bottom: 0px;
+    width: 100%;
+    padding: 0;
+
+    .footer-bottom{
+        background-color: $secondary-color;
+        color: $third-color;
+        box-shadow: $shadow-above;
+        }
+    }

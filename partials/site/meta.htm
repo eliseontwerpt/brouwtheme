@@ -1,0 +1,36 @@
+==
+<meta name="viewport" content="width=device-width, initial-scale=1" /> 
+<title>{{ this.theme.theme_site_name }}</title>
+{# Favicon #}
+{% if this.theme.fav_icon == '' %}
+<link rel="icon" type="image/png" href="{{ 'assets/images/favicon.png'|theme }}">
+{% else %}
+<link rel="icon" type="image/png" href="{{ this.theme.fav_icon.getPath|resize(80,80, { mode: 'crop', quality: '100', extension: 'png' } ) }}">
+{% endif %}
+
+
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+      
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet"> 
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&display=swap" rel="stylesheet"> 
+
+ <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap" rel="stylesheet"> 
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet"> 
+
+{# CSS #}
+
+<link href="{{ 'assets/plugins/bootstrap/css/bootstrap.min.css'|theme }}" rel="stylesheet">
+
+{# Style SCSS #}
+
+<link href="{{ [
+  'assets/scss/style.scss'
+]|theme }}" rel="stylesheet">

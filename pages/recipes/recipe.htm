@@ -1,0 +1,69 @@
+title = "Recipe"
+url = "/recipe/:id"
+layout = "basic-layout"
+is_hidden = 0
+
+[BrewRecipes]
+recipePage = "home"
+==
+{% set recipe = BrewRecipes.recipe.first %} 
+
+{% set bugu = recipe.ibu / ((recipe.og  * 1000) - 1000 )  %}
+
+{% if recipe.bjcp.bugu_min is empty  %}
+    {% set bugu_min = recipe.bjcp.ibu_min / ((recipe.bjcp.og_min * 1000) - 1000 ) %} 
+{% else %}      
+    {% set bugu_min = recipe.bjcp.bugu_min  %}  
+{% endif %}   
+{% if recipe.bjcp.bugu_max is empty %} 
+    {% set bugu_max = recipe.bjcp.ibu_max / ((recipe.bjcp.og_max * 1000) - 1000 ) %}    
+{% else %}     
+    {% set bugu_max = recipe.bjcp.bugu_max %}      
+{% endif %}
+
+
+<section class="recipes">
+    <div class="container p-5">
+        <div class="row mb-5">  
+            <div class="col-12">    
+                <h2 class="text-center">{{ recipe.name }} </h2>
+            </div>
+            <div class="col-12 text-center">
+                <a href="{{ 'styles/style'|page( {id: recipe.bjcp_id })}}">Categorie | {{ recipe.bjcp.styles|_ }}</a>
+            </div>
+        </div> 
+        <div class="row mb-5">
+            <div class="col-lg col-md-4 col-sm-12 mb-2 text-center"><h6>{{'boil_time'|_ }}</h6>{{ recipe.boil_time }} min</div>
+            <div class="col-lg col-md-4 col-sm-12 mb-2 text-center"><h6>{{ 'volume'|_ }}</h6>{{ recipe.volume }} liter</div>            
+        </div>
+        <div class="row mb-5">            
+            <div class="col-lg-2 col-md-4  col-sm-12 mb-2 text-center"><h6>{{ 'og'|_ }}</h6>{{ recipe.og }} mg/l</div>
+            <div class="col-lg-10 col-md-6  col-sm-12">{% partial 'svg/style-block' naam='og' waarde=recipe.og min=recipe.bjcp.og_min max=recipe.bjcp.og_max formaat='1.000'  %}</div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-2 col-md-4 col-sm-12 mb-2 text-center"><h6>IBU:</h6>{{ recipe.ibu }}</div>
+            <div class="col-lg-10 col-md-6  col-sm-12">{% partial 'svg/style-block' naam='IBU' waarde=recipe.ibu min=recipe.bjcp.ibu_min max=recipe.bjcp.ibu_max formaat='0' %}</div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-2 col-md-4 col-sm-12 mb-2 text-center"><h6>{{ 'color'|_ }}</h6>{{ recipe.ebc }}</div>
+            <div class="col-lg-10 col-md-6  col-sm-12">{% partial 'svg/style-block' naam='EBC' waarde=recipe.ebc min=recipe.bjcp.ebc_min max=recipe.bjcp.ebc_max formaat='0' %}</div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-2 col-md-4 col-sm-12 mb-2 text-center"><h6>{{ 'bugu'|_ }}</h6>{{ bugu|round(2) }}</div>
+            <div class="col-lg-10 col-md-6  col-sm-12">{% partial 'svg/style-block' naam='bugu' waarde=bugu  min=bugu_min max=bugu_max formaat='0.00' %}</div>
+        </div>
+        <div class="row mb-5">
+            {% partial 'recipes/waterprofile' %}
+        </div>       
+        <div class="row mb-5">
+            {% partial 'recipes/malttable' %}
+        </div> 
+        <div class="row mb-5">
+            {% partial 'recipes/hoptable' %}
+        </div>
+        <div class="row mb-5">
+            {% partial 'recipes/mashtable' %}
+        </div>  
+
+    </div>
+</section>

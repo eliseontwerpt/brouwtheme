@@ -1,0 +1,37 @@
+.recipes-recipes{
+    background: url('../../assets/images/beerstyles.jpg') no-repeat 50% 70%;
+    background-color: $fourth-color;
+     background-size: cover;
+    }
+.recipe-list{
+
+    a{
+        color: $third-color
+        
+        }
+    a:hover{
+        opacity: 0.8;
+        }
+    .recipe-item{
+        h5{
+            min-height: 50px;
+            
+            }
+        img{
+            border-radius: 10px;
+            border: 2px solid $primary-color;
+            background-origin: padding-box;
+            box-shadow: $shadow;            
+            padding: 0px;
+            }
+        border: 4px solid $fourth-color;
+        padding: 20px;
+        box-shadow: $shadow;
+        border-radius: 10px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        min-height: 250px;
+        background-color: $secondary-color;
+        }
+    }
+    

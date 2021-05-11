@@ -1,0 +1,42 @@
+$primary-color: rgb(210, 74, 60); // #d24a3c; 
+$secondary-color: rgb(122, 167, 164); // #7aa7a4;
+$third-color: rgb(255, 236, 210); // #ffecd2; 
+$fourth-color: rgb(237, 219,195); // #eddbc3;
+
+$dark: rgb(74, 118, 115); //#4a7673;  
+$light: rgb(253, 248, 242); // #fdf8f2;
+
+$primary-font: 'Merriweather Sans', sans-serif;
+$header-font: 'Special Elite', cursive;
+
+
+$background-1: url('../../assets/images/bg-1.png');
+
+$shadow: 2px 2px 8px rgba(0,0,0,0.3);
+$shadow-above: -2px -2px 8px rgba(0,0,0,0.3);
+
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}

@@ -1,0 +1,42 @@
+title = "Recipes"
+url = "/recipes"
+layout = "overview-layout"
+is_hidden = 0
+
+[BrewRecipes]
+sorting = "name"
+direction = "asc"
+numberofitems = 100
+==
+{% set recipes = BrewRecipes.recipes %}
+<section class="recipe-list">
+    
+    <div class="container">
+        <div class="row text-center">            
+            
+            {% for recipe in recipes  %}
+                <a class="col-lg-3 col-md-6 col-sm-12 " href="{{ 'recipes/recipe'|page( {id: recipe.id })}}">
+                    <div class="recipe-item ">
+                        <h5>{{ recipe.name }}</h5>
+                        <p><img style="background-color:rgb({{recipe.rgb.rgb_r }},{{recipe.rgb.rgb_g}},{{ recipe.rgb.rgb_b}});" src="{{ 'bierglas.png'|media|resize(100,100, { mode: 'crop', quality: '100', extension: 'png' } ) }}"></p>
+                        <span>{{ recipe.bjcp.styles }}</span>
+                    </div>
+                </a>
+            {% endfor %}    
+        </div>
+        {% if recipes.lastPage > 1 %}
+            <div class="row p-5 text-center">
+                <div class="col-6">
+                    {% if recipes.currentPage != 1  %}
+                        <a href="{{ recipes.previousPageUrl }}" class="btn" >{{ 'previous'|_ }}</a>
+                    {% endif %}
+                </div>
+                <div class="col-6">
+                    {% if recipes.lastPage != recipes.currentPage  %}
+                        <a href="{{ recipes.nextPageUrl }}" class="btn">{{ 'next'|_ }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>

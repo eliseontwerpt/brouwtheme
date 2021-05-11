@@ -1,0 +1,46 @@
+header{
+    position: fixed;
+    overflow-y: hidden;
+    top: 0;
+    z-index:100000;
+    width: 100%;
+    }
+.navigation{
+        background-image: $background-1;
+        background-color: $secondary-color;
+        background-size: cover;
+        box-shadow: $shadow;
+        .navbar-brand{
+            h1{
+                font-family: $primary-font;
+                text-transform: uppercase;
+                }
+            } 
+        .nav-item{
+            width: 200px;
+            font-family: $header-font;
+            font-size: 1.8rem;
+            text-align: center;
+            }
+        }
+
+.navigation{
+    button[aria-expanded="true"]{    
+        
+         .open-icon{ 
+            display: none;
+        }
+        .close-icon{
+            display: inline;
+            }
+    }
+    button[aria-expanded="false"]{
+        .open-icon{ 
+            display: inline;
+        }
+        .close-icon{
+           display: none;
+        }
+    }
+}
+    

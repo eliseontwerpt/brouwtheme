@@ -1,0 +1,44 @@
+==
+{% if waarde is empty %} 
+    {% set waarde = (min + max) / 2  %}
+{% endif %}
+{% if limit is empty %}
+    {% set limit = 100  %}
+{% endif %}
+{% if next_step is empty %}
+    {% set next_step = 5 %}    
+{% endif %}
+{% if steps is empty %}
+    {% set steps = 5 %}
+{% endif %}
+{##}
+
+
+{% set start = formaat|slice(0,1) %}
+
+{% set aantal_nullen = formaat|replace({'.':''})|length  %}
+{% set waarde1 = (waarde - start) * 10000|slice(0, aantal_nullen )  %}
+{% set min = (min - start) * 10000|slice(0, aantal_nullen ) %}
+{% set max = (max - start) * 10000|slice(0, aantal_nullen )  %}
+
+
+{% set zoom = 100 / limit %}
+<!-- ABV -->
+<svg width="100%" height="100px" cx="100px" cy="100px" class="svg-object">                
+
+    <rect width="100%" height="100%" y="0%" class="rect-block" />
+    <line x1="0%" y1="50%" x2="100%" y2="50%" class="line-median"  />
+        <!--?php echo set_grid(10, 1, 1000, $zoom) ?-->
+    
+    {% for i in 0..limit %}
+        {% if next_step == i %}
+            {% set a = start + i / 10000|slice(0, aantal_nullen) %}
+            <line x1="{{ i * zoom }}%" y1="45%" x2="{{ i * zoom }}%" y2="55%" class="line-scale" />' ;
+            <text x="{{ i * zoom }}%" y="75%"  dx="{{ a|length * -2.5 }}" class="text-scale" >{{ a }}</text>          
+            {% set next_step = next_step + steps %}
+        {% endif %}
+    {% endfor %}
+    <line x1="{{  waarde1 * zoom }}%" y1="0%" x2="{{ waarde1 * zoom }}%" y2="100%" class="line-waarde"  />
+    <text x="10" y="95%" fill="rgb(150, 150, 150)" class="text-title" >{{ naam|_ }}</text>
+    <rect width="{{ (max - min) * zoom }}%" height="100%" y="0%" x="{{  min * zoom }}%" class="rect-style-block"  />
+</svg>

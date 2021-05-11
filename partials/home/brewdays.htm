@@ -1,0 +1,26 @@
+==
+<section class="brewdays">
+<div class="container">
+    <div class="row">
+    {% for day in BrewDay.alldays %} 
+        <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                                              
+                <a href="{{ 'brewday/brewday'|page({ id: day.id })}}">
+                    {% if day.photos is empty %}
+                        {% set thumbnail = 'tripel.png'|media %} 
+                    {% else %}
+                        {% set thumbnail = day.photos.first.path %}
+                    {% endif %}
+                    <div class="brew-item"> 
+                        <h1></h1>
+                        <h4>{{ day.recipe.name}}</h4> 
+                        <h6>{{ day.date_brewday|date('d') }} {{ day.date_brewday|date('F')|_ }} {{ day.date_brewday|date('Y') }}</h6>
+                        
+                        <img style="background-color:rgb({{day.recipe.rgb.rgb_r }},{{ day.recipe.rgb.rgb_g}},{{ day.recipe.rgb.rgb_b}});"  src="{{ thumbnail|resize(200,200, { mode: 'crop', quality: '100', extension: 'png' } ) }}" alt="{{ day.name}}">
+                    </div>
+                </a>                
+            
+        </div>
+        {% endfor %}
+    </div> 
+</section>

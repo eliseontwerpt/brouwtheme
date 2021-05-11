@@ -1,0 +1,40 @@
+title = "Beerstyles"
+url = "/beerstyles/:sorteer?/:filteren?"
+layout = "overview-layout"
+is_hidden = 0
+
+[BeerStyles]
+sorting = "bjcp_categories_id"
+direction = "asc"
+numberofitems = 500
+==
+{% if this.param.sorteer != '' %}
+     {% set sorteerkey = this.param.sorteer %} 
+ {% else %}
+     {% set sorteerkey = 0 %}
+ {% endif %}
+
+<section>
+    <div class="container">
+        <div class="row sorteer">
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+                <a href="{{ 'styles/beerstyles'|page({ sorteer: 'origin', filteren:'' })}}"><h4>{{ 'Sort by'|_ }} {{ 'Country'|_ }}</h4></a>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+                <a href="{{ 'styles/beerstyles'|page({ sorteer: 'style_family', filteren:'' })}}"><h4>{{ 'Sort by'|_ }} {{ 'styles'|_ }}</h4></a>
+            </div>
+        </div>
+    <div class="row">
+        {% set styles = BeerStyles.beerstyles %}
+        {% for style in styles  %}
+            {% set sorteer_val = style[sorteerkey].value %} 
+            
+            {% if sorteer_val != prev_loop %}<a class="col-lg-12 text-center mt-3 mb-3" href="{{ 'styles/beerstyles'|page({ sorteer: sorteerkey , filteren:  style[sorteerkey].id })}}"><h3 >{{ sorteer_val|_ }}</h3></a>{% endif %}
+            
+            <div class="col-lg-3"><a href="{{ 'styles/style'|page( {id: style.id })}}">{{ style.styles|_ }}</a></div>
+            
+            {% set prev_loop = sorteer_val%}
+        {% endfor %}
+        </div>
+    </div>
+</section>

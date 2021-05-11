@@ -1,0 +1,57 @@
+title = "Hops"
+url = "/hops/:sorteer?/:filteren?"
+layout = "overview-layout"
+is_hidden = 0
+
+[HopsList]
+sorting = "variety"
+direction = "asc"
+numberofitems = 0
+==
+{% if this.param.sorteer != '' %}
+     {% set sorteerkey = this.param.sorteer %} 
+ {% else %}
+     {% set sorteerkey = 0 %}
+ {% endif %}
+
+<section>
+    <div class="container">
+        <div class="row sorteer">
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+                <a href="{{ 'hops/hops'|page({ sorteer: 'origin', filteren: '' })}}"><h4>{{ 'Sort by'|_ }} {{ 'Country'|_ }}</h4></a>
+            </div>
+            <div class="col col-lg-3 col-md-6 col-sm-12">
+                <a href="{{ 'hops/hops'|page({ sorteer: 'purpose', filteren: '' })}}"><h4>{{ 'Sort by'|_ }} {{ 'Purpose'|_ }}</h4></a>
+            </div>
+        </div>
+        <div class="row">
+            {% set styles = HopsList.listOfHops %}
+            
+            {% for style in styles  %}
+                
+                {% set sorteer_val = style[sorteerkey] %}                
+                {% if sorteer_val != prev_loop %}<a class="col-lg-12 text-center mt-3 mb-3" href="{{ 'hops/hops'|page({ sorteer: sorteerkey , filteren:  style[sorteerkey] })}}"><h3>{{ sorteer_val|_ }}</h3></a>
+                {% endif %}
+                    
+                    <div class="col-lg-4"><a href="{{ 'hops/hop'|page( {id: style.id })}}">{{ style.bjcp_categories_id }} {{ style.variety }}</a></div>
+                
+                {% set prev_loop = sorteer_val%}
+
+            {% endfor %}
+        </div>
+        {% if styles.lastPage > 1 %}
+            <div class="row p-5 text-center">
+                <div class="col-6">
+                    {% if styles.currentPage != 1  %}
+                        <a href="{{ styles.previousPageUrl }}" class="btn" >{{ 'previous'|_ }}</a>
+                    {% endif %}
+                </div>
+                <div class="col-6">
+                    {% if styles.lastPage != styles.currentPage  %}
+                        <a href="{{ styles.nextPageUrl }}" class="btn">{{ 'next'|_ }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>

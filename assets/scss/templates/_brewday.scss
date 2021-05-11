@@ -1,0 +1,30 @@
+.brewday{
+    margin-bottom: 50px;
+    
+    .comment{
+        width: 100%;
+         border: 4px solid $fourth-color;
+        background-color: rgba(237, 219,195,0.6);
+        padding: 5%;
+        border-radius: 10px;
+        box-shadow: inset $shadow;
+        }
+     img{
+         width: 70%;
+         margin-left: 15%;
+         border-radius: 10px;
+         border: 2px solid $primary-color;
+         }
+    .material-icons{
+        font-size: 100%;
+        color: $secondary-color;
+        }
+    h1, h2, h3, h4, h5, h6{
+        
+        }
+    h1, h2, h3 {
+        padding-top: 50px;
+        text-align: center;
+        }
+ 
+ }

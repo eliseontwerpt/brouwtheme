@@ -1,0 +1,28 @@
+==
+<header class="navigation">
+    <nav class="navbar navbar-expand-lg" id="navbar">
+        <div class="container">            
+            <a class="navbar-brand text-center"  href="/"><img id="nav-brand" src="{{ this.theme.logo.getPath|resize('80') }}"/><h1 class="text-center" id="nav-header">Harm Jan's</h1></a>      
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="material-icons open-icon">&#xe5d2;</span> 
+               <span class="material-icons close-icon">&#xe5cd;</span>  
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">                
+                <ul class="navbar-nav mr-auto text-center">
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{ 'home'|page }}">{{ 'Brewdays'|_ }}</a>    
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ 'recipes/recipes'|page }}">{{ 'Recipes'|_ }}</a>    
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav" href="{{ 'styles/beerstyles'|page }}">{{ 'Beerstyles'|_ }}</a>    
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ 'hops/hops'|page }}">{{ 'Hops'|_ }}</a>    
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

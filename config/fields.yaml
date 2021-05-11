@@ -1,0 +1,77 @@
+tabs:
+  fields:
+
+    ####################################################
+    # Tab: 1.0 General Settings
+    ####################################################
+    
+    theme_info_section:
+      tab: "General"
+      label: "Info"
+      type: section
+      comment: "General Informations"
+      cssClass: "p-a m-y control-scrollpanel"
+
+    theme_site_name:
+      tab: "General"
+      label: "Website Name"
+      type: text
+      default: "Harm Jan Brouwt"   
+    
+    logo:
+            tab: "General"
+            label: Site Logo
+            comment: The Logo that will be shown on the website
+            type: fileupload
+            mode: image
+            imageHeight: 80
+            imageWidth: 80
+            filetypes: png
+            thumbOptions:
+                mode: crop
+                quality: 100
+                extension: auto
+                
+    fav_icon:
+            tab: "General"
+            label: Favicon
+            comment: The icon will be used in the adressbar.
+            type: fileupload
+            mode: image
+            imageHeight: 80
+            imageWidth: 80
+            filetypes: png
+            thumbOptions:
+                mode: crop
+                quality: 100
+                extension: auto
+                
+    primary_color:
+      tab: "Colorscheme"
+      label: Primary color
+      type: colorpicker
+      assetVar: 'primary-color'
+      default: #7aa7a4
+      
+    secondary_color:
+      tab: "Colorscheme"
+      label: Secondary color
+      type: colorpicker
+      assetVar: 'secondary-color'
+      default: #d24a3c
+    
+    background_color:
+      tab: "Colorscheme"
+      label: Background color
+      type: colorpicker
+      assetVar: 'background-color'
+      default: #eddbc3
+    
+    navigation_color:
+      tab: "Colorscheme"
+      label: Navigation color
+      type: colorpicker
+      assetVar: 'navigation-color'
+      default: #eddbc3
+
+

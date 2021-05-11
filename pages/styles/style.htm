@@ -1,0 +1,72 @@
+title = "Style"
+url = "/beerstyles/style/:id"
+layout = "basic-layout"
+is_hidden = 0
+
+[BeerStyles]
+BjcpStyleGuide = "home"
+==
+{% set style = BeerStyles.beerstyle.first %}   
+<section>
+    <div class="container">
+        <div class="row mb-5">  
+            <div class="col-8">
+                <h2 class="text-center">{{ style.styles|_ }} </h2>
+            </div>
+            <div class="col-4">
+                <h2 class="text-center">[#{{ style.bjcp_categories_id}}]</h2>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-5 col-sm-12">
+                <ul class="list-unstyled mb-5">
+                    <li class="mb-2"><h6>{{ 'style_family'|_ }}:</h6> {{ style.style_family.value|_ }}</li>
+                    <li class="mb-2"><h6>{{ 'style_history'|_ }}:</h6> {{ style.style_history.value|_ }}</li>
+                    <li class="mb-2"><h6>{{ 'categorie'|_ }}:</h6> {{ style.categories.value|_ }}</li>
+                    <li class="mb-2"><h6>{{ 'origin'|_ }}:</h6>{{ style.origin.value|_}}</li>
+                </ul>
+                <ul class="list-unstyled text-center">
+                    <li class="mb-3">
+                        <h6>ABV:</h6> {{ style.abv_min }}% - {{ style.abv_max }}%
+                        {% partial 'svg/style-block' naam='ABV' limit=21 min=style.abv_min max=style.abv_max formaat='0' next_step=2 steps=2 %}
+                    </li>
+                    <li class="mb-3">
+                        <h6>{{ 'bitterness'|_}} (IBU):</h6> {{ style.ibu_min }} - {{ style.ibu_max }}
+                        {% partial 'svg/style-block' naam='IBU'  min=style.ibu_min max=style.ibu_max formaat='0' %}
+                    </li>
+                    <li class="mb-3"><h6>{{ 'color'|_}} (EBC):
+                        </h6> {{ style.ebc_min }} - {{ style.ebc_max }}
+                        {% partial 'svg/style-block' naam='IBU' min=style.ebc_min max=style.ebc_max formaat='0' %}
+                    </li>
+                    <li class="mb-3"><h6>{{ 'og'|_}}:
+                        </h6> {{ style.og_min }} - {{ style.og_max }}
+                        {% partial 'svg/style-block' naam='IBU'  min=style.og_min max=style.og_max formaat='1.000' steps=15 limit=150 %}
+                    </li>
+                    {% if style.bugu_min is not empty %} 
+                    <li class="mb-3"><h6>{{ 'bugu'|_ }}:
+                        </h6> {{ style.bugu_min }} - {{ style.bugu_max }}
+                        {% partial 'svg/style-block' naam='bugu' min=style.bugu_min max=style.bugu_max formaat='0.0' %}
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="col-lg-8 col-md-7 col-sm-12">
+                <ul class="list-unstyled mb-5">
+                    <li class="mb-2"><h6>{{ 'overall_impression'|_ }}:</h6> {{ style.overall_impression }}</li>
+                    <li class="mb-2"><h6>{{ 'aroma'|_ }}:</h6> {{ style.aroma }}</li>
+                    <li class="mb-2"><h6>{{ 'appearance'|_ }}:</h6> {{ style.appearance }}</li>
+                    <li class="mb-2"><h6>{{ 'flavor'|_ }}:</h6>{{ style.flavor }}</li>
+                    <li class="mb-2"><h6>{{ 'mouthfeel'|_ }}:</h6>{{ style.mouthfeel }}</li>
+                    <li class="mb-2"><h6>{{ 'comments'|_ }}:</h6>{{ style.comments }}</li>
+                    <li class="mb-2"><h6>{{ 'history'|_ }}:</h6>{{ style.history }}</li>
+                    <li class="mb-2"><h6>{{ 'characteristic_ingredients'|_ }}:</h6>{{ style.characteristic_ingredients }}</li>
+                    <li class="mb-2"><h6>{{ 'style_comparison'|_ }}:</h6>{{ style.style_comparison }}</li>
+                    <li class="mb-2"><h6>{{ 'commercial_examples'|_ }}:</h6>{{ style.commercial_examples }}</li>
+                    <li class="mb-2"><h6>{{ 'notes'|_ }}:</h6>{{ style.notes }}</li>
+                </ul>                           
+            </div>
+        </div>
+    </div>
+
+</section>

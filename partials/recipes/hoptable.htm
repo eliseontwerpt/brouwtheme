@@ -1,0 +1,28 @@
+==
+{% set recipe = BrewRecipes.recipe.first %} 
+<div class="col-12 text-center">                
+    <h3 class="text-center">{{ 'hoptable'|_}}</h3>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">{{ 'variety'|_}}</th>
+            <th scope="col">{{ 'volume'|_}}</th>
+            <th scope="col">{{ 'time'|_}}</th>
+            <th scope="col">{{ 'alphaacid'|_}}</th>
+            <th scope="col">{{ 'ibu'|_}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hop in recipe.hops %}
+        <tr>
+            <th scope="row">
+            <a href="{{ 'hops/hop'|page ( {id: hop.hop_list_id }) }}">{{ hop.hop_list.variety }}</a></th>            
+            <td>{{ hop.grams }} gr</td>
+            <td>{{ hop.time }} min</td>
+            <td>{{ hop.alpha }}%</td>
+            <td>{{ hop.ibu }}</td>            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

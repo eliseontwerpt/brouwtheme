@@ -1,0 +1,25 @@
+==
+{% set recipe = BrewRecipes.recipe.first %} 
+<div class="col-12 text-center">                
+    <h3 class="text-center">{{ 'malttable'|_ }}</h3>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="row">{{ 'malt'|_}}</th>
+            <th scope="row">{{ 'volume'|_}}</th>
+            <th scope="row">{{ 'percentage'|_}}</th>
+            <th scope="row">{{ 'add to mash'|_}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for malt in recipe.malts %}
+        <tr>
+            <th scope="row">{{ malt.malt_list.name }}</th>            
+            <td>{{ malt.massa }} gr</td>
+            <td>{{ malt.percentage }}%</td>
+            <td>{{ malt.mash }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

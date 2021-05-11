@@ -1,0 +1,29 @@
+==
+{% set recipe = BrewRecipes.recipe.first %}
+<div class="row m-5">
+    <div class="col-lg-12">
+        <h2 class="text-center">{{ 'volumes'|_}}</h2>
+    </div>
+    <div class="col-lg-6 text-center">
+        <h5 class="text-center">{{ 'mashwater'|_}}</h5>
+        <span>{{ recipe.mashwater }} liter</span>
+    </div>
+    <div class="col-lg-6 text-center">
+        <h5 class="text-center">{{ 'spargewater'|_}}</h5>
+        <span>{{ recipe.spargewater }} liter</span>
+    </div>
+    <div class="col-lg-12">
+        <h2 class="text-center">{{ 'waterchemistry'|_}}</h2>
+    </div>
+    <div class="col-lg-4 text-center">
+        <h5>{{ 'KaCl'|_ }}</h5>
+        <span>{{ recipe.KaliumChloride }} grams</span>
+    </div>
+    <div class="col-lg-4 text-center">
+        <h5>{{ 'NaHCO3'|_ }}</h5>
+        <span>{{ recipe.BakingSoda }} grams</span></div>
+    <div class="col-lg-4 text-center">
+        <h5>{{ 'CaSO4'|_ }}</h5>
+        <span>{{ recipe.CalciumSulfaat }} grams</span>
+    </div>
+</div>

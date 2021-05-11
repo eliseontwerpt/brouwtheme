@@ -1,0 +1,37 @@
+.svg-object{
+    border: 1px dotted $dark;
+    //border-radius: 10px;
+    font-family: $header-font;
+    .rect-block {
+        fill: $fourth-color;
+        stroke-width:0;
+        stroke: $dark;
+        }
+    .line-median{
+        stroke: $dark;
+        stroke-width:1;        
+        }
+    .line-scale{
+        stroke: $dark;
+        stroke-width:1;
+        } 
+    .text-scale{
+        font-size: calc(5px + 0.3vw);
+        
+        font-weight: bold;
+        fill: $dark;
+        }
+    .line-waarde {
+        stroke: $primary-color;
+        stroke-width:3;
+        }
+    .line-text{
+        font-size: 1.0rem;
+        fill: $secondary-color;
+        }
+    .rect-style-block{
+        fill: rgba(0, 0, 0,0.2);
+        stroke-width: 0;
+        stroke: rgb(0,0,0);
+        }
+    }
